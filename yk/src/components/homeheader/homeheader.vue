@@ -11,15 +11,15 @@
     <div class="header-nav">
       <div class="header-box clearfix" >
         <ul>
-          <li><a href="javascript:;" >推荐</a></li>
-          <li><a href="javascript:;">居家生活</a></li>
-          <li><a href="javascript:;" >鞋饰服包</a></li>
-          <li><a href="javascript:;" >美食酒水</a></li>
-          <li><a href="javascript:;">个人清理</a></li>
-          <li><a href="javascript:;">母婴亲自</a></li>
-          <li><a href="javascript:;">运动旅游</a></li>
-          <li><a href="javascript:;">数码家电</a></li>
-          <li><a href="javascript:;">礼品特色</a></li>
+          <li><span @click="toone('1')" :class="{active:index==1}">推荐</span></li>
+          <li><span  @click="totwo('2')" :class="{active:index==2}">居家生活</span></li>
+          <li><span @click="tothree('3')" :class="{active:index==3}">鞋饰服包</span></li>
+          <li><span @click="tofour('4')" :class="{active:index==4}">美食酒水</span></li>
+          <li><span  @click="tofive('5')" :class="{active:index==5}">个人清理</span></li>
+          <li><span @click="tosix('6')" :class="{active:index==6}">母婴亲自</span></li>
+          <li><span @click="toseven('7')" :class="{active:index==7}">运动旅游</span></li>
+          <li><span @click="toeight('8')" :class="{active:index==8}">数码家电</span></li>
+          <li><span @click="tonine('9')" :class="{active:index==9}">礼品特色</span></li>
         </ul>
         <div class="icon">
           <img :class ="{on:isShow}" @click="isShow=!isShow" :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png'" alt="展开"/>
@@ -50,9 +50,41 @@
     data(){
       return{
         isShow:false,
-        index:0
+        index:'1'
       }
     },
+    methods:{
+      toone(index){
+        this.index=index
+      },
+      totwo(index){
+        this.index=index
+      },
+      tothree(index){
+        this.index=index
+      },
+      tofour(index){
+        this.index=index
+      },
+      tofive(index){
+        this.index=index
+      },
+      tosix(index){
+        this.index=index
+      },
+      toseven(index){
+        this.index=index
+      },
+      toeight(index){
+        this.index=index
+      },
+      tonine(index){
+        this.index=index
+      },
+
+
+    }
+
 
   }
 </script>
@@ -63,6 +95,7 @@
     top 0px
     left 0px
     width 100%
+    z-index 1000
     .content
       display flex
       width 100%
@@ -112,9 +145,11 @@
             line-height 60px
             padding 0 16px
             justify-content center
-            >a
+            >span
               font-size 28px
-
+              &.active
+                color red
+                border-bottom  2px solid red
 
         .icon
           position absolute
@@ -123,30 +158,33 @@
           width 100px
           height 60px
           background-color white
+          z-index 1000
           >img
             width 28px
             height 28px
             padding-left 36px
             padding-top 16px
-            transition transition 300ms linear
-            z-index 1000
+            transition transition 3000ms linear
+
             &.on
               transform:rotateZ(180deg)
 
 
         .mask
-          z-index 10
+
           position absolute
           top 0px
           left 0px
           width 100%
           background-color: #fff
           .channels
+
             font-size 28px
             padding-left 30px
             height 60px
             line-height 60px
           .maskList
+
 
             >li
               float left

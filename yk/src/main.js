@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router/index'
 import Mint from 'mint-ui';
+import store from './store';
+import './mock/mock-server';
+
 Vue.use(Mint);
 import { Button } from 'mint-ui'
 Vue.component(Button.name, Button)
@@ -19,5 +22,7 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store,
+
 })

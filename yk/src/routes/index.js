@@ -4,9 +4,13 @@ import personal from '../pages/personal/personal.vue'
 import shopping from '../pages/shopping/shopping.vue'
 import things from '../pages/things/things.vue'
 
+
 const routes = [
   {path:'/home',component:home},
-  {path:'/fent',component:fent},
+  {
+    path: '/fent',
+    component: fent,
+  },
   {path:'/things',component:things},
   {path:'/shopping',component:shopping},
   {path:'/personal',component:personal},

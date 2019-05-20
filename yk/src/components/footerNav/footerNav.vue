@@ -37,6 +37,7 @@
   bottom 0px
   left 0px
   width 100%
+  background-color white
   ul
     border-top 0.75px solid #eee
     height 100px
