@@ -26,11 +26,18 @@
     <welfare></welfare>
     <!--商品直供-->
     <brand></brand>
-
-
-
-
-
+    <!--好评-->
+    <good></good>
+    <!--私人定制-->
+    <customize></customize>
+    <!--限时购-->
+    <Time></Time>
+    <!--新品-->
+    <New></New>
+    <!--人气-->
+    <moods></moods>
+    <!--分类-->
+    <list></list>
   </div>
 </template>
 
@@ -40,6 +47,13 @@
   import headernav from '../../components/headernav/headernav.vue'
   import welfare from '../../components/welfare/welfare.vue'
   import brand from '../../components/brand/brand.vue'
+  import good from '../../components/goods/good.vue'
+  import customize from '../../components/customize/customize.vue'
+  import Time from '../../components/Time/Time.vue'
+  import New from '../../components/New/New.vue'
+  import moods from '../../components/moods/moods.vue'
+  import list from '../../components/list/list.vue'
+  import {mapState} from 'vuex'
   export default {
     name: "home",
     components: {
@@ -48,11 +62,24 @@
       "header-nav":headernav,
       welfare,
       brand,
+      good,
+      customize,
+      Time,
+      New,
+      moods,
+      list
     },
+    computed:{
+      ...mapState(['homeData'
+      ]
+    )
+    },
+    mounted(){
+
+        this.$store.dispatch('gethomedata')
 
 
-
-
+    }
 
   }
 </script>

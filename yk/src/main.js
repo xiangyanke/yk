@@ -6,10 +6,30 @@ import router from './router/index'
 import Mint from 'mint-ui';
 import store from './store';
 import './mock/mock-server';
+import  'lib-flexible/flexible'
+import search from './pages/search/search.vue';
+import VueLazyload from 'vue-lazyload'
+import loading from './common/loading/loading.jpg'
+Vue.use(VueLazyload, {
+  loading
+})
+
+import VeeValidate from 'vee-validate'
+Vue.use(VeeValidate)
+import zh_CN from 'vee-validate/dist/locale/zh_CN'
+VeeValidate.Validator.localize('zh_CN', {
+  messages: zh_CN.messages,
+  attributes: {
+    phone: '手机号',
+    code: '验证码',
+    myemail:'邮箱'
+  }
+})
+
+
 
 Vue.use(Mint);
 import { Button } from 'mint-ui'
-Vue.component(Button.name, Button)
 
 
 

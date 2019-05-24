@@ -1,54 +1,34 @@
 <template>
-  <div class="headernav">
+  <div class="headernav" v-if="homeData">
     <ul >
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
+      <li v-for="(item ,index) in homeData.kingKongModule.kingKongList" :key="index">
+        <img :src="item.picUrl" alt="导航列表">
+        <span>{{item.text}}</span>
       </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
-      <li>
-        <img data-v-b421918c="" src="http://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="导航列表">
-        <span>居家生活</span>
-      </li>
+
     </ul>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex'
   export default {
-    name: "headernav"
+    name: "headernav",
+    computed:{
+      ...mapState(['homeData'])
+
+    },
+
+
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus" >
   .headernav
     position absolute
     left 0px
     top 606px
-    background-color rgba(0,0,0,0.2)
+    background-color #eee
     width 750px
     >ul
 

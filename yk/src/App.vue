@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <footer-nav></footer-nav>
+    <footer-nav v-show="$route.meta.showfoot"></footer-nav>
   </div>
 </template>
 
@@ -13,7 +13,12 @@ export default {
     "footer-nav":footerNav,
 
 
+  },
+  mounted(){
+    this.$store.dispatch('gethomedata')
   }
+
+
 }
 </script>
 

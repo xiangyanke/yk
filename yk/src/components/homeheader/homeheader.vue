@@ -2,25 +2,28 @@
   <div class="header">
     <div class="content">
       <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png" alt="网易严选">
-      <div class="search-box">
+      <div class="search-box" @click="$router.push('/search')">
         <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png" alt="放大镜">
         <span class="show">收搜商品，共11111好件</span>
       </div>
-      <span class="btn">登录</span>
+      <span class="btn" @click="$router.replace('/personal')">登录</span>
     </div>
     <div class="header-nav">
       <div class="header-box clearfix" >
-        <ul>
-          <li><span @click="toone('1')" :class="{active:index==1}">推荐</span></li>
-          <li><span  @click="totwo('2')" :class="{active:index==2}">居家生活</span></li>
-          <li><span @click="tothree('3')" :class="{active:index==3}">鞋饰服包</span></li>
-          <li><span @click="tofour('4')" :class="{active:index==4}">美食酒水</span></li>
-          <li><span  @click="tofive('5')" :class="{active:index==5}">个人清理</span></li>
-          <li><span @click="tosix('6')" :class="{active:index==6}">母婴亲自</span></li>
-          <li><span @click="toseven('7')" :class="{active:index==7}">运动旅游</span></li>
-          <li><span @click="toeight('8')" :class="{active:index==8}">数码家电</span></li>
-          <li><span @click="tonine('9')" :class="{active:index==9}">礼品特色</span></li>
-        </ul>
+        <div class="ul">
+          <ul>
+            <li><span @click="toone('1')" :class="{active:index==1}">推荐</span></li>
+            <li><span  @click="totwo('2')" :class="{active:index==2}">居家生活</span></li>
+            <li><span @click="tothree('3')" :class="{active:index==3}">鞋饰服包</span></li>
+            <li><span @click="tofour('4')" :class="{active:index==4}">美食酒水</span></li>
+            <li><span  @click="tofive('5')" :class="{active:index==5}">个人清理</span></li>
+            <li><span @click="tosix('6')" :class="{active:index==6}">母婴亲自</span></li>
+            <li><span @click="toseven('7')" :class="{active:index==7}">运动旅游</span></li>
+            <li><span @click="toeight('8')" :class="{active:index==8}">数码家电</span></li>
+            <li><span @click="tonine('9')" :class="{active:index==9}">礼品特色</span></li>
+          </ul>
+        </div>
+
         <div class="icon">
           <img :class ="{on:isShow}" @click="isShow=!isShow" :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png'" alt="展开"/>
 
@@ -45,6 +48,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
   export default {
     name: "homeHeader",
     data(){
@@ -83,7 +87,17 @@
       },
 
 
-    }
+    },
+    mounted(){
+      this.$nextTick(()=> {
+        new BScroll('.ul', {
+          click: true,//启用点击，因为better-scroll会默认禁用掉元素的点击事件
+          scrollX: true //横向滑动
+        })
+      })
+
+
+   }
 
 
   }
@@ -94,12 +108,12 @@
     position fixed
     top 0px
     left 0px
-    width 100%
+    width 750px
     z-index 1000
+    background-color white
     .content
       display flex
-      width 100%
-      padding 8px 15px
+      width 750px
       align-items center
 
       >img
@@ -135,21 +149,22 @@
     .header-nav
       .header-box
         position relative
-        >ul
-          float left
-          display flex
-          >li
+        .ul
+          >ul
+            float left
             display flex
-            width 150px
-            box-sizing border-box
-            line-height 60px
-            padding 0 16px
-            justify-content center
-            >span
-              font-size 28px
-              &.active
-                color red
-                border-bottom  2px solid red
+            >li
+              display flex
+              width 150px
+              box-sizing border-box
+              line-height 60px
+              padding 0 16px
+              justify-content center
+              >span
+                font-size 28px
+                &.active
+                  color red
+                  border-bottom  2px solid red
 
         .icon
           position absolute
@@ -164,9 +179,10 @@
             height 28px
             padding-left 36px
             padding-top 16px
-            transition transition 3000ms linear
+            transition transition 3000s linear
 
             &.on
+
               transform:rotateZ(180deg)
 
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" >
     <ul>
       <li class="item" @click="$router.replace('/home') " :class="{on:$route.path==='/home'}">
         <i class="iconfont icon-shouye-"></i>
@@ -9,7 +9,7 @@
         <i class="iconfont icon-fenlei-"></i>
         <span>分类</span>
       </li>
-      <li class="item" @click="$router.replace('/things')" :class="{on:$route.path==='/things'}">
+      <li class="item" @click="$router.replace('/things' ) || $router.replace('/things/recommend')" :class="{on:$route.path==='/things'|| $route.path==='/things/recommend' ||$route.path==='/things/pick'}">
         <i class="iconfont icon-xiaoxi-"></i>
         <span>识物</span>
       </li >

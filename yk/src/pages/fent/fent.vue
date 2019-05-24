@@ -1,6 +1,6 @@
 <template>
-  <div class="categoryList">
-    <div class="search-box">
+  <div class="categoryList" v-if="categorydata">
+    <div class="search-box" @click="$router.push('/search')">
       <i class="iconfont icon-icon_search"></i>
       <span>收搜商品 ，共xxxx好物 </span>
     </div>
@@ -8,42 +8,41 @@
       <div class="listNav" >
         <ul>
           <li v-for="(category,index) in categorydata" :key="index"
-          @click="to(index)" :class="{active:categorydata[corindex]===category}"
+              @click="to(index)" :class="{active:categorydata[corindex]===category}"
           >{{category.name}}
 
           </li>
         </ul>
       </div>
-      <div class="fents"  v-if="categorydata[corindex]">
-        <div class="fentscontent" >
-          <img :src="categorydata[corindex].wapBannerUrl" />
-        </div>
-        <div class="list">
-          <ul>
-            <li v-for="(item,index) in categorydata[corindex].subCateList" :key="index">
-              <img :src="item.bannerUrl" />
-              <span>{{item.name}}</span>
-            </li>
+      <div class="ul1">
+        <div class="fents"  v-if="categorydata[corindex]">
+          <div class="fentscontent" >
+            <img :src="categorydata[corindex].wapBannerUrl" />
+          </div>
+          <div class="list">
+            <ul>
+              <li v-for="(item,index) in categorydata[corindex].subCateList" :key="index">
+                <img :src="item.bannerUrl" />
+                <span>{{item.name}}</span>
+              </li>
 
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-
-
-
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-
+  import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   export default {
     name: "fent",
-    data(){
-      return{
-        subCateList:[],
-        corindex:0
+    data() {
+      return {
+        subCateList: [],
+        corindex: 0
 
       }
 
@@ -54,9 +53,19 @@
 
 
     },
-    mounted(){
-      this.$store.dispatch('getcategoryList')
-    },
+
+   async mounted() {
+
+      await this.$store.dispatch('getcategoryList', () => {
+      this.$nextTick(() => {
+        new BScroll('.ul1', {
+          click: true
+        })
+      })
+    })
+  },
+
+
     methods:{
       to(index){
         this.corindex = index
@@ -70,13 +79,16 @@
 <style lang="stylus" rel="stylesheet/stylus">
 .categoryList
   .search-box
-    position relative
+    position fixed
+    top 0
+    left 0px
     display flex
     justify-content center
     height 56px
     align-items center
-    background-color #eee
+    background white
     margin 15px 25px
+
     &:after
       display block
       content ''
@@ -92,9 +104,13 @@
       font-size 28px
     >span
       font-size 28px
+      background-color #eee
   .content
-    position relative
+    position absolute
+    top 56px
+    left 0px
     .listNav
+
       >ul
         >li
           font-size 30px
@@ -107,27 +123,29 @@
           margin-left 3px
           &.active
             border-left 6px solid red
-  .fents
-    position absolute
-    left 190px
-    top 0px
-    .fentscontent
-      margin-bottom 30px
-      img
-        width 528px
-        height 192px
-    .list
-      >ul
-        display flex
-        flex-wrap wrap
-        width 100%
-        >li
-          text-align center
-          width 144px
-          margin-right 30px
-          >img
-            width 144px
-            height 144px
+    .ul1
+      position absolute
+      left 190px
+      top 56px
+      .fents
+        height 100000px
+        .fentscontent
+          margin-bottom 30px
+          img
+            width 528px
+            height 192px
+        .list
+          >ul
+            display flex
+            flex-wrap wrap
+            width 100%
+            >li
+              text-align center
+              width 144px
+              margin-right 30px
+              >img
+                width 144px
+                height 144px
 
 
 
