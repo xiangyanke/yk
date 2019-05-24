@@ -37,7 +37,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" >
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   .flash_sale_box
     margin-top 20px
     border-top 35px solid #eee

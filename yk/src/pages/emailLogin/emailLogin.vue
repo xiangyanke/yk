@@ -43,7 +43,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   .loginheader
     border-bottom  1px solid #999
     height 100px

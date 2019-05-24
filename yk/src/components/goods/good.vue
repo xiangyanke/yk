@@ -24,7 +24,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" >
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 .goods
   padding 0 20px
   ul

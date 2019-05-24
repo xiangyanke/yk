@@ -65,7 +65,7 @@
 
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" >
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 .customize
   overflow hidden
   margin-left 25px
